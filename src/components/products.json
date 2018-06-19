@@ -1,0 +1,26 @@
+[
+    {
+    "id": 1000,
+    "name": "Lego Star wars",
+    "price": 100.00,
+    "brand": "Lego"
+    },
+    {
+    "id": 1001,
+    "name": "Peppa pig ",
+    "price": 79.90,
+    "brand": "Mattel"
+    },
+    {
+    "id": 1002,
+    "name": "Avengers Board game",
+    "price": 180.85,
+    "brand": "Disney"
+    },
+            {
+    "id": 1003,
+    "name": "Barbie's Kitchen ",
+    "price": 92.47,
+    "brand": "Mattel"
+    }
+]
