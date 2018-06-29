@@ -3,23 +3,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Modal from "@material-ui/core/Modal";
 import CardList from "./components/CardList/index";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import checkout from "./components/Checkout";
-
-const styles = theme => ({
-  paper: {
-    position: "absolute",
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4
-  }
-});
 
 class App extends Component {
   state = { items: [] };
@@ -31,7 +19,6 @@ class App extends Component {
   render() {
     console.log(this.props);
     console.log(this.state.items.l);
-    const { classes } = this.props;
 
     return (
       <div className="App">
@@ -72,7 +59,4 @@ const mapStateToProps = state => ({
   items: state.productReducer.products
 });
 
-const SimpleModalWrapped = withStyles(styles)(App);
-
 export default connect(mapStateToProps)(App);
-//export default App;
