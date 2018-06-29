@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { Route, NavLink, HashRouter } from "react-router-dom";
-import checkout from "./Checkout";
+import checkout from "./components/Checkout";
 
 const styles = theme => ({
   paper: {
@@ -52,7 +52,13 @@ class App extends Component {
             </div>
           </Toolbar>
         </AppBar>
-        <CardList />
+        <HashRouter>
+          <div>
+            <NavLink to="/checkout">Checkout</NavLink>
+            <Route exact path="/" component={CardList} />
+            <Route exact path="/checkout" component={checkout} />
+          </div>
+        </HashRouter>
       </div>
     );
   }
