@@ -7,6 +7,9 @@ import Modal from "@material-ui/core/Modal";
 import CardList from "./components/CardList/index";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import { Route, NavLink, HashRouter } from "react-router-dom";
+import checkout from "./Checkout";
 
 const styles = theme => ({
   paper: {
@@ -19,7 +22,15 @@ const styles = theme => ({
 });
 
 class App extends Component {
+  state = { items: [] };
+  componentWillReceiveProps() {
+    console.log("willreceiveProps");
+    this.setState({ items: this.props.items });
+  }
+
   render() {
+    console.log(this.props);
+    console.log(this.state.items.l);
     const { classes } = this.props;
 
     return (
@@ -27,7 +38,8 @@ class App extends Component {
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
-              Welcome to Big Toy, your online toy store
+              Welcome to Big Toy, your online toy store{" "}
+              {this.state.items && this.state.items.length}
             </Typography>
             <div style={{ marginLeft: 100 + "px" }}>
               <Button
@@ -35,7 +47,7 @@ class App extends Component {
                 variant="contained"
                 color="primary"
               >
-                add
+                checkout
               </Button>
             </div>
           </Toolbar>
@@ -50,6 +62,11 @@ App.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+const mapStateToProps = state => ({
+  items: state.productReducer.products
+});
+
 const SimpleModalWrapped = withStyles(styles)(App);
 
-export default App;
+export default connect(mapStateToProps)(App);
+//export default App;
