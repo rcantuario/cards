@@ -26,8 +26,6 @@ class CardElement extends Component {
     this.setState({
       openModal: true
     });
-
-    console.log(this.state);
   };
 
   render() {

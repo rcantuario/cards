@@ -8,18 +8,15 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import checkout from "./components/Checkout";
+import cadastro from "./components/Cadastro";
 
 class App extends Component {
   state = { items: [] };
   componentWillReceiveProps() {
-    console.log("willreceiveProps");
     this.setState({ items: this.props.items });
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state.items.l);
-
     return (
       <div className="App">
         <AppBar position="static" color="default">
@@ -41,9 +38,11 @@ class App extends Component {
         </AppBar>
         <HashRouter>
           <div>
-            <NavLink to="/checkout">Checkout</NavLink>
+            <NavLink to="/checkout">Checkout </NavLink>
+            <NavLink to="/cadastro">Cadastro</NavLink>
             <Route exact path="/" component={CardList} />
             <Route exact path="/checkout" component={checkout} />
+            <Route exact path="/cadastro" component={cadastro} />
           </div>
         </HashRouter>
       </div>
