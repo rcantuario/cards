@@ -2,7 +2,7 @@ const initialState = {
   products: []
 };
 
-export const productReducer = (state = initialState, action) => {
+export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_PRODUCT":
       console.log("add prod");

@@ -53,7 +53,7 @@ class Checkout extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.productReducer.products
+  items: state.cartReducer.products
 });
 
 export default connect(mapStateToProps)(Checkout);
