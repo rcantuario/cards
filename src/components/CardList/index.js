@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Card from "../Card";
 
-const products = [
+const productsOld = [
   {
     id: 1000,
     name: "Lego Star wars",
@@ -30,14 +30,20 @@ const products = [
 ];
 
 class CardList extends Component {
-  render() {
-    const productList = products.map(product => (
-      <li style={{ listStyleType: "none", marginTop: 5 + "px" }}>
-        <Card item={product} />
-      </li>
-    ));
+  render(props) {
+    const products = this.props.products;
 
-    return <ol> {productList} </ol>;
+    if (products) {
+      const productList = products.map(product => (
+        <li style={{ listStyleType: "none", marginTop: 5 + "px" }}>
+          <Card item={product} />
+        </li>
+      ));
+
+      return <ol> {productList} </ol>;
+    } else {
+      return <h2> None product found </h2>;
+    }
   }
 }
 

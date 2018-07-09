@@ -9,11 +9,19 @@ import { connect } from "react-redux";
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import checkout from "./components/Checkout";
 import cadastro from "./components/Cadastro";
+import { listProduct } from "./actions";
+import { bindActionCreators } from "redux";
 
 class App extends Component {
-  state = { items: [] };
+  state = { items: [], list: [] };
+
   componentWillReceiveProps() {
     this.setState({ items: this.props.items });
+  }
+
+  componentDidMount() {
+    console.log("ja montou");
+    this.props.listProduct();
   }
 
   render() {
@@ -40,7 +48,13 @@ class App extends Component {
           <div>
             <NavLink to="/checkout">Checkout </NavLink>
             <NavLink to="/cadastro">Cadastro</NavLink>
-            <Route exact path="/" component={CardList} />
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <CardList {...props} products={this.props.list} />
+              )}
+            />
             <Route exact path="/checkout" component={checkout} />
             <Route exact path="/cadastro" component={cadastro} />
           </div>
@@ -55,7 +69,14 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  items: state.cartReducer.products
+  items: state.cartReducer.products,
+  list: state.productReducer.products
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ listProduct }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -3,4 +3,11 @@ export const addProduct = value => ({
   product: value
 });
 
-//importar a action e usar ela para add o produto
+export const listProduct = () => ({
+  type: "LIST_PRODUCT"
+});
+
+export const createProduct = item => ({
+  type: "CREATE_PRODUCT",
+  product: item
+});
